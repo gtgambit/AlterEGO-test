@@ -19,7 +19,7 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
-  ({ article: { link, title, summary } }) => {
+  ({ article: { link, title, summary, _id } }) => {
     const { t } = useTranslation();
 
     const slicedTitle =
@@ -27,14 +27,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
     const slicedDescription =
       summary?.length > 80 ? `${summary?.slice(0, 80)}...` : summary;
 
-    let image = "https://picsum.photos/200/300";
+    const image = "https://picsum.photos/200/300";
 
     const dispatch = useAppDispatch();
-    const handleArticleDelete = (event: any) => {
-      const articleUrl = event.target
-        .closest("div > div")
-        .querySelector("a").href;
-      dispatch(deleteArticle(articleUrl));
+    const handleArticleDelete = () => {
+      dispatch(deleteArticle(_id));
     };
 
     return (

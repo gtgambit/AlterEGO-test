@@ -24,7 +24,7 @@ const articlesSlice = createSlice({
   reducers: {
     deleteArticle(state, { payload }) {
       state.articles = state.articles.filter(
-        (article) => article.link !== payload
+        (article) => article._id !== payload
       );
     },
   },
