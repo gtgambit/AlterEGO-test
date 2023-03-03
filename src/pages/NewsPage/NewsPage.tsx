@@ -46,8 +46,8 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
         {t("news.title")}
       </Typography>
       <Grid container spacing={2}>
-        {articles.map((article: any, index: number) => (
-          <ArticleCard key={index} article={article} />
+        {articles.map((article: any) => (
+          <ArticleCard key={article._id} article={article} />
         ))}
       </Grid>
       {hasMoreArticles && (

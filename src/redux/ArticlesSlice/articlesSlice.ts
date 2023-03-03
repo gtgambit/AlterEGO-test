@@ -24,7 +24,7 @@ const articlesSlice = createSlice({
   reducers: {
     deleteArticle(state, { payload }) {
       state.articles = state.articles.filter(
-        (article) => article.url !== payload
+        (article) => article.link !== payload
       );
     },
   },
@@ -37,7 +37,7 @@ const articlesSlice = createSlice({
       })
       .addCase(getArticles.fulfilled, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
-        state.totalResults = action.payload.totalResults;
+        state.totalResults = action.payload.total_hits;
         state.articles = action.payload?.articles;
       })
       .addCase(getArticles.rejected, (state, action: PayloadAction<any>) => {
@@ -53,7 +53,7 @@ const articlesSlice = createSlice({
         (state, action: PayloadAction<any>) => {
           state.isLoadingMore = false;
           state.articles = [...state.articles, ...action.payload?.articles];
-          state.totalResults = action.payload.totalResults;
+          state.totalResults = action.payload.total_hits;
         }
       )
       .addCase(

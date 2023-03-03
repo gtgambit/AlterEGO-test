@@ -19,15 +19,15 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
-  ({ article: { url, title, description, urlToImage } }) => {
+  ({ article: { link, title, summary } }) => {
     const { t } = useTranslation();
 
     const slicedTitle =
       title?.length > 60 ? `${title?.slice(0, 60)}...` : title;
     const slicedDescription =
-      description?.length > 80
-        ? `${description?.slice(0, 80)}...`
-        : description;
+      summary?.length > 80 ? `${summary?.slice(0, 80)}...` : summary;
+
+    let image = "https://picsum.photos/200/300";
 
     const dispatch = useAppDispatch();
     const handleArticleDelete = (event: any) => {
@@ -44,8 +44,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
             <CardMedia
               sx={{ height: 200 }}
               image={
-                urlToImage
-                  ? urlToImage
+                image
+                  ? image
                   : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
               }
               title={title}
@@ -68,7 +68,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
             <CardActions
               sx={{ display: "flex", justifyContent: "space-between" }}>
               <Button size="small">
-                <Link href={url} target="_blank" rel="noopener noreferrer">
+                <Link href={link} target="_blank" rel="noopener noreferrer">
                   {t("articleCard.learnMore")}
                 </Link>
               </Button>
