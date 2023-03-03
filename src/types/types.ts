@@ -6,4 +6,5 @@ export interface Article {
   published_date: string;
   _id: string;
   _score: string;
+  media: string;
 }

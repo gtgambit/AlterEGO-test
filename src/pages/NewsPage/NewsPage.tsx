@@ -32,7 +32,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
 
   useEffect(() => {
     dispatch(getArticles(page));
-  }, [dispatch, page]);
+  }, []);
 
   const loadMoreArticles = () => {
     setPage((prev) => prev + 1);

@@ -15,7 +15,7 @@ export const fetchArticles = async (
     `https://api.newscatcherapi.com/v2/search?q=Apple&countries=CA&page=${page}&page_size=10`,
     {
       headers: {
-        "x-api-key": "2BYtwO2X3GisJoLyg90TFOlDtvDLuWT7QcXedFKBPzo",
+        "x-api-key": "cqX7HfDCtzYnFfGMCK3ZmlrZFWMfxFk0gYa52ftbKJM",
       },
     }
   );

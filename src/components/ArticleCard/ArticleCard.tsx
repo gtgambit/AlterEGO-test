@@ -1,12 +1,15 @@
 import * as React from "react";
-import { Grid, Link } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import {
+  Grid,
+  Link,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+  Box,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
 import { deleteArticle } from "../../redux/ArticlesSlice/articlesSlice";
@@ -19,7 +22,7 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
-  ({ article: { link, title, summary, _id } }) => {
+  ({ article: { link, title, summary, _id, media } }) => {
     const { t } = useTranslation();
 
     const slicedTitle =
@@ -27,7 +30,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
     const slicedDescription =
       summary?.length > 80 ? `${summary?.slice(0, 80)}...` : summary;
 
-    const image = "https://picsum.photos/200/300";
+    const noImage =
+      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
 
     const dispatch = useAppDispatch();
     const handleArticleDelete = () => {
@@ -40,11 +44,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
           <Card sx={{ height: "100%" }}>
             <CardMedia
               sx={{ height: 200 }}
-              image={
-                image
-                  ? image
-                  : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-              }
+              image={media ? media : noImage}
               title={title}
             />
             <CardContent sx={{ height: 100 }}>
