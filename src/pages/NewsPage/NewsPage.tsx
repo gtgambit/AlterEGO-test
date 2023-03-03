@@ -63,5 +63,3 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
     </section>
   );
 };
-
-////
