@@ -1,7 +1,7 @@
 {
-  "name": "localhost",
+  "name": "alterego-test",
   "version": "0.1.0",
-  "homepage": "https://gtgambit.github.io/localhost",
+  "homepage": "https://gtgambit.github.io/alterego-test",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
