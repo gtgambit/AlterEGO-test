@@ -37,6 +37,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
 
   useEffect(() => {
     loadArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
