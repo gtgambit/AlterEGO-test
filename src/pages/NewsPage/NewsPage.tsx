@@ -58,6 +58,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
           <Button
             variant="contained"
             color="primary"
+            sx={{ background: "#0093E9" }}
             onClick={loadMoreArticles}>
             {t("buttons.loadMore")}
           </Button>

@@ -11,7 +11,8 @@ export const Footer: React.FC<FooterProps> = () => {
       sx={{
         width: "100%",
         height: "auto",
-        backgroundColor: "#0288d1",
+        backgroundColor: "#0093E9",
+        backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
         paddingTop: "1rem",
         paddingBottom: "1rem",
       }}>

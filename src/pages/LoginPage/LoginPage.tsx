@@ -132,7 +132,7 @@ export const LoginPage = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3 }}
+            sx={{ mt: 3, background: "#0093E9" }}
             color="primary">
             {t("auth.login")}
           </Button>
