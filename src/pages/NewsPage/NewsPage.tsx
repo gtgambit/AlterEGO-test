@@ -15,7 +15,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
 
   const [page, setPage] = useState<any>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  //const [isMounted, setIsMounted] = useState<boolean>(false);
   const { t } = useTranslation();
 
   const loadMoreArticles = () => {
@@ -29,12 +29,16 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
   };
 
   useEffect(() => {
-    if (isMounted) {
-      loadMoreArticles();
-    } else {
-      setIsMounted(true);
-    }
-  }, [isMounted]);
+    loadMoreArticles();
+  }, [page]);
+
+  //useEffect(() => {
+  //  if (isMounted) {
+  //    loadMoreArticles();
+  //  } else {
+  //    setIsMounted(true);
+  //  }
+  //}, [isMounted]);
 
   return (
     <section>
