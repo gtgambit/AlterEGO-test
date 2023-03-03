@@ -1,15 +1,13 @@
-import { AppBar, Box, Container } from "@mui/material";
 import { Suspense, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { AppBar, Box, Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { Footer } from "../components/Footer/Footer";
+
 import { Header } from "../components/Header/Header";
+import { Footer } from "../components/Footer/Footer";
 import { Loader } from "../components/Loader/Loader";
 
-type LayoutProps = {
-  children: JSX.Element;
-};
-
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = (): JSX.Element => {
   const { i18n } = useTranslation();
   useEffect(() => {
     if (localStorage.getItem("LANGUAGE") === "en") {
@@ -17,7 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
       return;
     }
     i18n.changeLanguage("ua");
-  }, []);
+  }, [i18n]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -27,9 +25,11 @@ export const Layout = ({ children }: LayoutProps) => {
         </Container>
       </AppBar>
       <Box sx={{ flexGrow: 1, background: "#EDEDED" }}>
-        <Suspense fallback={<Loader />}>
-          <Box>{children}</Box>
-        </Suspense>
+        <Box>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Box>
       </Box>
       <Footer />
     </Box>

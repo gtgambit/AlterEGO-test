@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
+import { Grid, Paper, TextField, Button, Typography, Box } from "@mui/material";
 import { validationSchema } from "./schema";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box } from "@mui/system";
-import { authUser } from "../../redux/Auth/authSlice";
 
 import { useTranslation } from "react-i18next";
-
 import { useDispatch } from "react-redux";
+
+import { authUser } from "../../redux/Auth/authSlice";
 
 interface IFormInputs {
   username: string;

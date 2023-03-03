@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import { Loader } from "./components/Loader/Loader";
 import { Layout } from "./Layout/Layout";
@@ -23,15 +23,17 @@ const Page404 = lazy(async () => ({
 
 function App() {
   return (
-    <Layout>
+    <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="*" element={<Page404 />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<Page404 />} />
+        </Route>
       </Routes>
-    </Layout>
+    </Suspense>
   );
 }
 

@@ -5,8 +5,8 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Container,
 } from "@mui/material";
-import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { withAuthRedirect } from "../../hoc/WithAuthRedirect";
 import { getUserAvatar } from "../../services/profileApi";
@@ -66,7 +66,11 @@ const ProfilePage = () => {
       <Box style={styles.root}>
         <Avatar
           alt="Profile Avatar"
-          src={profile?.avatar}
+          src={
+            profile?.avatar
+              ? profile.avatar
+              : "https://cdn.icon-icons.com/icons2/3310/PNG/512/student_man_avatar_user_toga_school_university_icon_209264.png"
+          }
           style={styles.avatar}
         />
         <Box>
