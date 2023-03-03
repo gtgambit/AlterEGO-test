@@ -6,3 +6,5 @@ export const articlesLoadingSelector = (state: ArticlesState) =>
   state.isLoading ?? false;
 
 export const articlesLoadingError = (state: ArticlesState) => state.error;
+
+export const totalResultsSelector = (state: any) => state.articles.totalResults;

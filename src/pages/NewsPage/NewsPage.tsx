@@ -2,8 +2,14 @@ import { useState, useEffect } from "react";
 import { ArticleCard } from "../../components/ArticleCard/ArticleCard";
 import { Grid, Button, Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
-import { getArticles } from "../../redux/ArticlesSlice/thunk";
-import { articlesSelector } from "../../redux/ArticlesSlice/articlesSelectors";
+import {
+  getArticles,
+  getMoreArticles,
+} from "../../redux/ArticlesSlice/thunkNews";
+import {
+  articlesSelector,
+  totalResultsSelector,
+} from "../../redux/ArticlesSlice/articlesSelectors";
 import { useAppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 
@@ -12,33 +18,26 @@ interface NewsPageProps {}
 export const NewsPage: React.FC<NewsPageProps> = () => {
   const dispatch = useAppDispatch();
   const articles = useSelector(articlesSelector);
+  const total = useSelector(totalResultsSelector);
 
-  const [page, setPage] = useState<any>(0);
-  const [hasMore, setHasMore] = useState<boolean>(true);
-  //const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [page, setPage] = useState<any>(1);
+
   const { t } = useTranslation();
 
+  const loadArticles = () => {
+    dispatch(getArticles(page));
+  };
+
+  const hasMoreArticles = page < total / 10;
+
   const loadMoreArticles = () => {
-    if (articles.length === 0) {
-      dispatch(getArticles(1));
-      setHasMore(true);
-      return;
-    }
     setPage((prev: any) => prev + 1);
-    dispatch(getArticles(page + 1));
+    dispatch(getMoreArticles(page + 1));
   };
 
   useEffect(() => {
-    loadMoreArticles();
-  }, [page]);
-
-  //useEffect(() => {
-  //  if (isMounted) {
-  //    loadMoreArticles();
-  //  } else {
-  //    setIsMounted(true);
-  //  }
-  //}, [isMounted]);
+    loadArticles();
+  }, []);
 
   return (
     <section>
@@ -50,7 +49,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
           <ArticleCard key={index} article={article} />
         ))}
       </Grid>
-      {hasMore && (
+      {hasMoreArticles && (
         <Box sx={{ textAlign: "center", mt: 2, mb: 2 }}>
           <Button
             variant="contained"
