@@ -12,10 +12,10 @@ export const fetchArticles = async (
   page: number
 ): Promise<FetchArticlesResponse> => {
   const { data } = await axios.get(
-    `https://api.newscatcherapi.com/v2/search?q=Apple&countries=CA&page=${page}&page_size=10`,
+    `https://api.newscatcherapi.com/v2/search?q=Apple&countries=US&page=${page}&page_size=10`,
     {
       headers: {
-        "x-api-key": "cqX7HfDCtzYnFfGMCK3ZmlrZFWMfxFk0gYa52ftbKJM",
+        "x-api-key": "ZhdhWRAgporQlPtfpC0XjDBMVUe3RdKjpRVu1O8ePkg",
       },
     }
   );
