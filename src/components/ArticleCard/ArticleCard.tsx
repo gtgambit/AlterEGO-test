@@ -14,7 +14,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
 import { deleteArticle } from "../../redux/ArticlesSlice/articlesSlice";
 import { useAppDispatch } from "../../redux/store";
-
 import { Article } from "../../types/types";
 
 interface ArticleCardProps {
@@ -25,10 +24,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
   ({ article: { link, title, summary, _id, media } }) => {
     const { t } = useTranslation();
 
-    const slicedTitle =
-      title?.length > 60 ? `${title?.slice(0, 60)}...` : title;
-    const slicedDescription =
-      summary?.length > 80 ? `${summary?.slice(0, 80)}...` : summary;
+    const slicedTitle = `${title.slice(0, 60)}...`;
+    const slicedDescription = `${summary.slice(0, 80)}...`;
 
     const noImage =
       "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
@@ -44,7 +41,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(
           <Card sx={{ height: "100%" }}>
             <CardMedia
               sx={{ height: 200 }}
-              image={media ? media : noImage}
+              image={media || noImage}
               title={title}
             />
             <CardContent sx={{ height: 100 }}>

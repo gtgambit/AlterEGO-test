@@ -16,9 +16,7 @@ export const NavLinks = React.memo(() => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  console.log(isAuth);
-
-  const Authlinks = [
+  const authLinks = [
     { to: "/", label: t("nav.home") },
     { to: "/news", label: t("nav.news") },
     { to: "/profile", label: t("nav.profile") },
@@ -40,7 +38,7 @@ export const NavLinks = React.memo(() => {
   return (
     <>
       {isAuth
-        ? Authlinks.map(({ to, label }) => (
+        ? authLinks.map(({ to, label }) => (
             <React.Fragment key={to}>
               <Box sx={{ display: "flex" }}>
                 <NavLink

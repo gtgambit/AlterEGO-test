@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Grid, Button, Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -28,7 +28,7 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
 
   const { t } = useTranslation();
 
-  const hasMoreArticles = page < total / 10;
+  const hasMoreArticles = useMemo(() => page < total / 10, [page, total]);
 
   useEffect(() => {
     dispatch(getArticles(page));
@@ -48,8 +48,8 @@ export const NewsPage: React.FC<NewsPageProps> = () => {
         {isLoadingArticles ? (
           <Loader />
         ) : (
-          articles.map((article: any) => (
-            <ArticleCard key={article._id} article={article} />
+          articles?.map((article: any) => (
+            <ArticleCard key={article?._id} article={article} />
           ))
         )}
       </Grid>

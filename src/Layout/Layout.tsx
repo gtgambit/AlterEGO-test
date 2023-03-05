@@ -8,13 +8,11 @@ import { Loader } from "../components/Loader/Loader";
 
 export const Layout = (): JSX.Element => {
   const { i18n } = useTranslation();
+  const language = localStorage.getItem("LANGUAGE") === "en" ? "en" : "ua";
+
   useEffect(() => {
-    if (localStorage.getItem("LANGUAGE") === "en") {
-      i18n.changeLanguage("en");
-      return;
-    }
-    i18n.changeLanguage("ua");
-  }, [i18n]);
+    i18n.changeLanguage(language);
+  }, [i18n, language]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -29,11 +27,9 @@ export const Layout = (): JSX.Element => {
         </Container>
       </AppBar>
       <Box sx={{ flexGrow: 1, background: "#EDEDED" }}>
-        <Box>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </Box>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Box>
       <Footer />
     </Box>
