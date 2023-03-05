@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Avatar,
   Box,
@@ -12,7 +13,6 @@ import { withAuthRedirect } from "../../hoc/WithAuthRedirect";
 import { getUserAvatar } from "../../services/profileApi";
 import { useTranslation } from "react-i18next";
 
-//import css from "./ProfilePage.module.css";
 const styles = {
   root: {
     marginTop: 4,
@@ -95,4 +95,7 @@ const ProfilePage = () => {
   );
 };
 
-export const ProtectedProfilePage = withAuthRedirect(ProfilePage, "/");
+export const ProtectedProfilePage = withAuthRedirect(
+  React.memo(ProfilePage),
+  "/"
+);
