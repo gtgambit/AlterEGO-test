@@ -24,6 +24,12 @@ export const Header = () => {
       <Typography variant="h6" sx={{ p: 2 }}>
         CBS News
       </Typography>
+      <Box
+        sx={{
+          background: "#0093E9",
+        }}>
+        <LanguageSelect />
+      </Box>
       <Divider />
       <List>
         <NavLinks />
