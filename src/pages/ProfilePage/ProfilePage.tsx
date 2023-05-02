@@ -60,7 +60,7 @@ const ProfilePage = () => {
             variant="h4"
             sx={{
               fontWeight: "bold",
-              textAlign: { xs: "center", md: "normal" },
+              textAlign: { xs: "center", md: "start" },
             }}>
             {profile.first_name}
           </Typography>
