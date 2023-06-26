@@ -84,6 +84,7 @@
 .backHomeLink {
   display: inline-block;
   padding: 5px 10px;
+  
 
   font-style: normal;
   font-weight: 400;
@@ -98,6 +99,6 @@
 
 .backHomeLink:focus,
 .backHomeLink:hover {
-  background-color: #4a56e2;
+  background-color: #4c58e1;
   color: var(--btn-color);
 }
