@@ -84,7 +84,6 @@
 .backHomeLink {
   display: inline-block;
   padding: 5px 10px;
-  
 
   font-style: normal;
   font-weight: 400;
@@ -95,6 +94,8 @@
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   outline: transparent;
   color: #4a56e2;
+  color: #4a56e2;
+  padding: 10px;
 }
 
 .backHomeLink:focus,
