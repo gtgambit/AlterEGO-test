@@ -90,7 +90,7 @@
   font-size: 14px;
   text-transform: uppercase;
 
-  border-radius: 20px;
+  border-radius: 19px;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   outline: transparent;
   color: #4a56e2;
@@ -98,6 +98,6 @@
 
 .backHomeLink:focus,
 .backHomeLink:hover {
-  background-color: #4c58e1;
+  background-color: #5561e2;
   color: var(--btn-color);
 }
